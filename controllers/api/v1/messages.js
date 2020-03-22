@@ -13,6 +13,12 @@ const getAll = (req, res) => {
     });
 }
 
+const getId = (req, res) => {
+    console.log(req.params.id);
+    //let msgId = req.params.id
+    //Message.findById();
+}
+
 const create = (req, res, next) => {
     let message = new Message();
     message.text = req.body.text;
@@ -37,4 +43,5 @@ const create = (req, res, next) => {
 }
 
 module.exports.getAll = getAll;
+module.exports.getId = getId;
 module.exports.create = create;
