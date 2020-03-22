@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const msgController = require('../../../controllers/api/v1/messages');
 
-router.post("/", (req, res) => {
-    res.json({
-        "status": "success",
-        "message": "Posting a new message for user Pikachu"
-    });
-})
+router.post("/", msgController.create)
 
 module.exports= router;
