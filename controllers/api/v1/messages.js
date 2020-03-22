@@ -78,7 +78,25 @@ const update = (req, res) => {
     });
 }
 
+const remove = (req, res) => {
+    let msgId = req.params.id;
+    Message.findOneAndDelete({
+        _id: msgId
+    }).then(result => {
+        res.json({
+            "status": "success",
+            "message": "The message was removed"
+        });
+    }).catch(err => {
+        res.json({
+            "status": "error",
+            "message": err
+        });
+    });
+}
+
 module.exports.getAll = getAll;
 module.exports.getId = getId;
 module.exports.create = create;
 module.exports.update = update;
+module.exports.remove = remove;

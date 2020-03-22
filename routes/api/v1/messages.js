@@ -6,5 +6,6 @@ router.get("/", msgController.getAll);
 router.get("/:id", msgController.getId);
 router.post("/", msgController.create);
 router.put("/:id", msgController.update);
+router.delete("/:id", msgController.remove);
 
 module.exports= router;
