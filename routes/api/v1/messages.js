@@ -5,5 +5,6 @@ const msgController = require('../../../controllers/api/v1/messages');
 router.get("/", msgController.getAll);
 router.get("/:id", msgController.getId);
 router.post("/", msgController.create);
+router.put("/:id", msgController.update);
 
 module.exports= router;

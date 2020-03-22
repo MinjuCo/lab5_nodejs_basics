@@ -58,6 +58,27 @@ const create = (req, res, next) => {
     });
 }
 
+const update = (req, res) => {
+    let text = req.body.text;
+    let msgId = req.params.id;
+    Message.findOneAndUpdate({
+        _id: msgId
+    },{
+        text: text
+    }, {new: true}).then(doc => {
+        res.json({
+            "status": "success",
+            "message": doc
+        });
+    }).catch(err => {
+        res.json({
+            "status": "error",
+            "message": err
+        });
+    });
+}
+
 module.exports.getAll = getAll;
 module.exports.getId = getId;
 module.exports.create = create;
+module.exports.update = update;
