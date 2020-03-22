@@ -1,5 +1,18 @@
 const Message = require('../../../models/Message');
 
+const getAll = (req, res) => {
+    Message.find({}, (err, docs) => {
+        if(!err){
+            res.json({
+                "status": "success",
+                "message": {
+                    docs
+                }
+            });
+        }
+    });
+}
+
 const create = (req, res, next) => {
     let message = new Message();
     message.text = req.body.text;
@@ -23,4 +36,5 @@ const create = (req, res, next) => {
     });
 }
 
+module.exports.getAll = getAll;
 module.exports.create = create;
