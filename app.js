@@ -9,6 +9,12 @@ const usersRouter = require('./routes/users');
 const apiMessageRouter = require('./routes/api/v1/messages');
 const config = require('config');
 
+const mongoose = require('mongoose');
+mongoose.connect(config.get('Database.conn'), {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+});
+
 var app = express();
 
 // view engine setup
