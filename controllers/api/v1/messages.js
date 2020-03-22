@@ -9,14 +9,30 @@ const getAll = (req, res) => {
                     docs
                 }
             });
+        }else{
+            res.json({
+                "status": "error",
+                "message": "Could not get messages from the database."
+            });
         }
     });
 }
 
 const getId = (req, res) => {
-    console.log(req.params.id);
-    //let msgId = req.params.id
-    //Message.findById();
+    let msgId = req.params.id
+    Message.findById({_id: msgId}, (err, doc) => {
+        if(!err){
+            res.json({
+                "status": "success",
+                "message": doc
+            });
+        }else{
+            res.json({
+                "status": "error",
+                "message": "Could not find message with id " + msgId 
+            });
+        }
+    });
 }
 
 const create = (req, res, next) => {
